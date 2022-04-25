@@ -22,8 +22,10 @@ public class Client {
 
             GUI g = new GUI(this);
             while (true) {
-                GUI.chattArea.append(readIn.readLine() + "\n");
-                GUI.verticalChatScroll.setValue(GUI.verticalChatScroll.getMaximum());
+                g.chattArea.append(readIn.readLine() + "\n");
+                g.verticalChatScroll.setValue(g.verticalChatScroll.getMaximum());
+                g.revalidate();
+                g.repaint();
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + args[0]);

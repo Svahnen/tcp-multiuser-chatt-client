@@ -7,9 +7,9 @@ public class GUI extends JFrame implements ActionListener {
     JPanel backgroundPanel = new JPanel();
     JLabel nameLabel = new JLabel("Name: ");
     JTextField nameField = new JTextField("Anonymous", 15);
-    public static JTextArea chattArea = new JTextArea(33, 70);
-    public static JScrollPane chatPane = new JScrollPane(chattArea);
-    public static JScrollBar verticalChatScroll = chatPane.getVerticalScrollBar();
+    public JTextArea chattArea = new JTextArea(33, 70);
+    public JScrollPane chatPane = new JScrollPane(chattArea);
+    public JScrollBar verticalChatScroll = chatPane.getVerticalScrollBar();
     JTextField chatField = new JTextField(70);
 
     GUI(Client c) {
