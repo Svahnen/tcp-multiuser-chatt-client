@@ -1,0 +1,1 @@
+javac -cp src/ src/Main.java && java -cp src Main 127.0.0.1 12345 ; rm -rf **/*.class

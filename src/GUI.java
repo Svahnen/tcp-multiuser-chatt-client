@@ -31,9 +31,11 @@ public class GUI extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == chatField) {
-            c.sendMessage(nameField.getText() + " : " + chatField.getText());
-            chatField.setText("");
-            verticalChatScroll.setValue(verticalChatScroll.getMaximum());
+            if (!chatField.getText().equals("")) {
+                c.sendMessage(nameField.getText() + ": " + chatField.getText());
+                chatField.setText("");
+                verticalChatScroll.setValue(verticalChatScroll.getMaximum());
+            }
         }
     }
 }
