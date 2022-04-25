@@ -7,10 +7,6 @@ public class GUI extends JFrame implements ActionListener {
     JPanel backgroundPanel = new JPanel();
     JLabel nameLabel = new JLabel("Name: ");
     JTextField nameField = new JTextField("Anonymous", 15);
-    JLabel ipLabel = new JLabel("Server IP: ");
-    public static JTextField ipField = new JTextField("127.0.0.1", 15);
-    JLabel portLabel = new JLabel("Port: ");
-    public static JTextField portField = new JTextField("12345", 5);
     public static JTextArea chattArea = new JTextArea(33, 70);
     public static JScrollPane chatPane = new JScrollPane(chattArea);
     public static JScrollBar verticalChatScroll = chatPane.getVerticalScrollBar();
@@ -27,10 +23,6 @@ public class GUI extends JFrame implements ActionListener {
         add(backgroundPanel);
         backgroundPanel.add(nameLabel);
         backgroundPanel.add(nameField);
-        backgroundPanel.add(ipLabel);
-        backgroundPanel.add(ipField);
-        backgroundPanel.add(portLabel);
-        backgroundPanel.add(portField);
         backgroundPanel.add(chatPane);
         backgroundPanel.add(chatField);
 

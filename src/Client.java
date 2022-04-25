@@ -8,28 +8,28 @@ import java.net.UnknownHostException;
 public class Client {
     PrintWriter out;
     BufferedReader in;
-    String hostName = GUI.ipField.getText();
-    int portNumber = Integer.parseInt(GUI.portField.getText());
 
-    public Client() throws IOException {
+    public Client(String[] args) throws IOException {
         try (
-                Socket addressSocket = new Socket(hostName, portNumber);
+                Socket addressSocket = new Socket(args[0], Integer.parseInt(args[1]));
 
                 PrintWriter printOut = new PrintWriter(addressSocket.getOutputStream(), true);
                 BufferedReader readIn = new BufferedReader(
                         new InputStreamReader(addressSocket.getInputStream()));) {
+
             this.out = printOut;
             this.in = readIn;
+
             GUI g = new GUI(this);
             while (true) {
                 GUI.chattArea.append(readIn.readLine() + "\n");
                 GUI.verticalChatScroll.setValue(GUI.verticalChatScroll.getMaximum());
             }
         } catch (UnknownHostException e) {
-            System.err.println("Don't know about host " + hostName);
+            System.err.println("Don't know about host " + args[0]);
             System.exit(1);
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to " + hostName);
+            System.err.println("Couldn't get I/O for the connection to " + args[0]);
             System.exit(1);
         }
     }

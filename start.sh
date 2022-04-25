@@ -1,1 +1,1 @@
-/usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/svahnen/.config/Code/User/workspaceStorage/622bcdeaca69e92e414d8d1db401ca87/redhat.java/jdt_ws/client_ba1e8b86/bin Main
+/usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/svahnen/.config/Code/User/workspaceStorage/622bcdeaca69e92e414d8d1db401ca87/redhat.java/jdt_ws/client_ba1e8b86/bin Main 127.0.0.1 12345
