@@ -6,38 +6,35 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Client {
+    PrintWriter out;
+    BufferedReader in;
+    String hostName = GUI.ipField.getText();
+    int portNumber = Integer.parseInt(GUI.portField.getText());
 
-    Client() throws IOException {
-        String hostName = "127.0.0.1"; //localhost
-
-        int portNumber = 12345;
-
+    public Client() throws IOException {
         try (
                 Socket addressSocket = new Socket(hostName, portNumber);
 
-                PrintWriter out = new PrintWriter(addressSocket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(
+                PrintWriter printOut = new PrintWriter(addressSocket.getOutputStream(), true);
+                BufferedReader readIn = new BufferedReader(
                         new InputStreamReader(addressSocket.getInputStream()));) {
-            String fromServer;
-            String fromUser;
-            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
-
-            while ((fromServer = in.readLine()) != null) {
-                System.out.println("Server: " + fromServer);
-
-                fromUser = stdIn.readLine();
-                if (fromUser != null) {
-                    out.println(fromUser);
-                }
+            this.out = printOut;
+            this.in = readIn;
+            GUI g = new GUI(this);
+            while (true) {
+                GUI.chattArea.append(readIn.readLine() + "\n");
+                GUI.verticalChatScroll.setValue(GUI.verticalChatScroll.getMaximum());
             }
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host " + hostName);
             System.exit(1);
         } catch (IOException e) {
-            System.err.println("Couldn't get I/O for the connection to " +
-                    hostName);
+            System.err.println("Couldn't get I/O for the connection to " + hostName);
             System.exit(1);
         }
+    }
 
+    public void sendMessage(String message) {
+        out.println(message);
     }
 }
